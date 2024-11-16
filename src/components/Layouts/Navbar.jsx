@@ -6,7 +6,7 @@ import { FaSun, FaMoon } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { DarkMode } from "../../context/DarkMode";
 import { useTotalPrice } from "../../context/TotalPriceContext";
-
+  
 const Navbar = () => {
   //darkmode
   const { isDarkMode, setIsDarkMode } = useContext(DarkMode);

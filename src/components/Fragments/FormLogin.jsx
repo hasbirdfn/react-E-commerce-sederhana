@@ -4,8 +4,6 @@ import Button from "../Elements/Button";
 import InputForm from "../Elements/Input"; 
 
 
-
-
 const FormLogin = () => {
     
     // kondisi login pesan error, atau sukses
@@ -14,6 +12,7 @@ const FormLogin = () => {
     const handleLogin = (event) => {
         event.preventDefault(); //agar tidak reload halaman
     // kondisi jika token ada maka masuk halaman product
+    //data diambil dari authservice, ambil dari api login fakestore
     const data = {
         username: event.target.username.value,
         password: event.target.password.value,
@@ -30,6 +29,11 @@ const FormLogin = () => {
     }
 
     //kondisi manipulasi dom focus ke username ketika di refresh halaman
+    //Properti current pada objek useRef digunakan untuk mengakses elemen atau nilai yang disimpan. Misalnya, saat Anda ingin memfokuskan elemen input,
+    /* 
+    useRef(null) digunakan untuk menginisialisasi ref dengan null karena elemen belum ada saat pertama kali komponen dirender.
+    current digunakan untuk mengakses elemen DOM yang di-refer setelah komponen dirender agar dapat dimanipulasi langsung, seperti memfokuskan input dengan 
+    */
     const usernameRef = useRef(null);
     useEffect(() => {
         usernameRef.current.focus();    

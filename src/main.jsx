@@ -13,9 +13,6 @@ import store from './redux/store.js'
 import DarkModeContextProvider from './context/DarkMode.jsx'
 import { TotalPriceProvider } from './context/TotalPriceContext.jsx'
 
-
-
-
  // provider ini utk menghubungkan apk dengan store
  //Semua komponen yang berada di dalam <Provider></Provider> dapat mengakses store menggunakan useSelector untuk mengambil state dan useDispatch untuk mengirimkan tindakan (action) ke store.
 const router = createBrowserRouter([

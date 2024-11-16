@@ -12,7 +12,7 @@ const Label = (props) => {
     return (
         <label htmlFor={htmlFor} className={`block text-sm font-bold text-slate-700 mb-2 after:content-["*"]  after:ml-0.5 ${isDarkMode ? " after:text-yellow-500" : "after:text-red-500"}`}>
         {children}
-      </label>
+      </label>  
     );
 };
 

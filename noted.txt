@@ -1,0 +1,6 @@
+Error ketika fetch API
+1. Internet tidak terhubung, DNS tidak ditemukan (domain tidak valid), Server tidak dapat dijangkau (server mati atau alamat IP salah).
+product.service.js:6 
+ GET https://fakestoreapi.com/products net::ERR_INTERNET_DISCONNECTED 
+
+2. 
