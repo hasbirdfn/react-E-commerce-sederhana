@@ -1,15 +1,41 @@
-import axios from "axios";
-import {jwtDecode} from "jwt-decode"; // Pastikan import ini benar, tanpa kurung kurawal
+import instance from "./axiosInstance";
+import {jwtDecode} from "jwt-decode"; 
+// Fungsi login dengan validasi input, error handling lebih baik, dan timeout
+/*
+Mengapa Menggunakan Axios Instance?
+Menghindari Duplikasi:
+Jika Anda sering menggunakan API yang sama, Anda tidak perlu menulis ulang baseURL atau konfigurasi lainnya setiap kali melakukan permintaan.
+Memudahkan Perubahan Global:
+Jika URL dasar API berubah (misalnya, dari staging ke production), Anda cukup mengganti di satu tempat saja.
+Meningkatkan Konsistensi
+*/
 
-// Fungsi login dengan async/await
-export const login = async (data, callback) => {
+export const login = async (data) => {
     try {
-        const res = await axios.post("https://fakestoreapi.com/auth/login", data);
-        callback(true, res.data.token); // Callback sukses
+        const res = await instance.post("auth/login", data);
+        return { success: true, token: res.data.token };
     } catch (error) {
-        callback(false, error); // Callback error
+        if (error.response) {
+            // Tangani status HTTP tertentu
+            switch (error.response.status) {
+                case 401:
+                    return { success: false, message: "Invalid username or password" };
+                case 500:
+                    return { success: false, message: "Server error. Please try again later." };
+                default:
+                    return { success: false, message: error.response.data || "Unexpected error occurred" };
+            }
+        } else if (error.request) {
+            // Tidak ada respons dari server
+            return { success: false, message: "No response from server. Please check your connection." };
+        } else {
+            // Kesalahan lainnya
+            return { success: false, message: error.message };
+        }
     }
 };
+
+
 
 // Fungsi getUsername tetap sederhana karena synchronous
 export const getUsername = (token) => {
@@ -21,9 +47,6 @@ export const getUsername = (token) => {
         return null; // Mengembalikan null jika token tidak valid
     }
 };
-
-
-
 
 
 

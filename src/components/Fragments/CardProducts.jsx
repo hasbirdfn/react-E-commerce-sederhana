@@ -42,7 +42,7 @@ const Footer = (props) => {
     return (
 <div className="flex items-center justify-between px-5 pb-5">
 <span className="text-black font-bold text-xl">${price.toLocaleString('id-ID', {styles: 'currency', currency: 'USD'})}</span>
-    <Button classname="bg-[#00AA5B] text-white" onClick={() => dispatch(addToCart({id, qty:1}))}><span className="font-bold text-xl text-left">+</span> Keranjang</Button>
+    <Button classname="bg-[#00AA5B] py-2 px-3 text-white" onClick={() => dispatch(addToCart({id, qty:1}))}><span className="font-bold text-xl">+</span> Keranjang</Button>
 </div>
     )
 }

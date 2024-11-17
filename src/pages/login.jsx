@@ -5,6 +5,7 @@ import AuthLayout from "../components/Layouts/AuthLayouts";
 const LoginPage = () => {
     return (
         <AuthLayout title="Login" type="login" subject="login">
+            {/* form login ini yg akan menjadi children di AuthLayuout */}
             <FormLogin/>
            
         </AuthLayout>

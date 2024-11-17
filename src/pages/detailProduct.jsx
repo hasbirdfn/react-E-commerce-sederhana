@@ -27,9 +27,14 @@ export const DetailProductPage = () => {
   const message = `Saya ingin membeli produk ${product.title}, bisa konsultasi?`;
   const whatsappLink = `https://wa.me/6285795501902?text=${encodeURIComponent(message)}`;
 
+
+  /* 
+  Gunakan product && product.id jika Anda ingin memastikan objek memiliki properti id atau properti tertentu yang Anda butuhkan.
+Gunakan Object.keys(product).length > 0 jika Anda ingin memeriksa apakah objek memiliki properti apa pun, dan objek tidak kosong (misalnya, product tidak kosong).
+  */
   return (
     <div className="w-100 min-h-screen flex justify-center items-center">
-      {product && product.id ? (
+      {product && product.id ? ( //Tujuan: Memeriksa apakah objek product ada dan memiliki properti id.
         <div className="flex font-sans max-w-xl">
           <div className="flex-none w-56 relative">
             <img 

@@ -53,16 +53,14 @@ const Navbar = () => {
       >
         {username}
         <Button
-          classname={`ml-3 ${
-            isDarkMode
-              ? "text-white bg-[#00AA5B]" // Dark mode: tulisan putih, bg hijau
-              : "text-[#00AA5B] bg-white"  // Light mode: tulisan hijau, bg putih
+          classname={`ml-3 p-2 ${
+            isDarkMode ? "bg-[#00AA5B] text-white" : "bg-white text-[#00AA5B]"
           }`}
           onClick={handleLogout}
         >
           Keluar
         </Button>
-        
+
         <div
         className={`flex items-center p-2 rounded-md ml-5 ${
           isDarkMode ? "bg-[#00AA5B] text-white" : "bg-white text-[#00AA5B]"

@@ -1,23 +1,28 @@
-import axios from "axios";
+import instance from "./axiosInstance";
+
+// Mendapatkan daftar produk
 export const getProducts = async () => {
     try {
-        const res = await axios.get("https://fakestoreapi.com/products");
-        return res.data; // Harus mengembalikan array
+        const res = await instance.get("products");
+        return res.data; // Mengembalikan data produk
     } catch (error) {
         console.error("Error fetching products:", error);
-        return []; // Kembalikan array kosong jika terjadi error
+        throw error; // Lemparkan error agar bisa ditangkap di `ProductsPage`
     }
 };
 
 
+// Mendapatkan detail produk berdasarkan ID
 export const getDetailProduct = async (id) => {
     try {
-        const res = await axios.get(`https://fakestoreapi.com/products/${id}`);
-        return res.data;
+        const res = await instance.get(`products/${id}`);
+        return res.data; // Mengembalikan data produk
     } catch (error) {
-        throw error;
+        console.error("Error fetching products:", error);
+        throw error; // Lemparkan error agar bisa ditangkap di `ProductsPage`
     }
 };
+
 
 
 // export const getProducts = (callback) => {
